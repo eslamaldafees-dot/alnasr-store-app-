@@ -4,24 +4,21 @@ on:
   push:
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-APK
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup JDK 17
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
+      - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build APK
@@ -31,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: alnasr-apk
-          path: app/build/outputs/apk/debug/app-debug.read
+          path: app/build/outputs/apk/debug/app-debug.apk
